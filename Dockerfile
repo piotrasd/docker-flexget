@@ -26,14 +26,17 @@ ADD https://pypi.python.org/packages/source/s/setuptools/setuptools-1.1.7.tar.gz
 VOLUME /config
 RUN ln -sf /config /root/.flexget
 
-EXPORT 5050
-
 WORKDIR /opt/flexget
 RUN python bootstrap.py
 RUN bin/pip install -r jenkins-requirements.txt
 RUN bin/pip install -r rtd-requirements.txt
 
 # Add flexget to runit
-RUN mkdir /etc/service/flexget
-ADD flexget.sh /etc/service/flexget/run
-RUN chmod +x /etc/service/flexget/run
+#RUN mkdir /etc/service/flexget
+#ADD flexget.sh /etc/service/flexget/run
+#RUN chmod +x /etc/service/flexget/run
+
+# Add flexget-webui to runit
+RUN mkdir /etc/service/flexget-webui
+ADD flexget-webui.sh /etc/service/flexget-webui/run
+RUN chmod +x /etc/service/flexget-webui/run
