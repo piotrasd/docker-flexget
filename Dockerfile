@@ -24,7 +24,7 @@ ADD https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz /opt/flexget/
 ADD https://pypi.python.org/packages/source/s/setuptools/setuptools-1.1.7.tar.gz /opt/flexget/setuptools-1.1.7.tar.gz
 
 VOLUME /config
-RUN ln -sf /confg /root/.flexget
+RUN ln -sf /config /root/.flexget
 
 EXPORT 5050
 
