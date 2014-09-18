@@ -19,9 +19,9 @@ RUN apt-get update -qq && \
     apt-get autoremove && \
     apt-get autoclean
 
-RUN git clone https://github.com/Flexget/Flexget.git /opt/flexget
-ADD https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz /opt/flexget/pip-1.4.1.tar.gz
-ADD https://pypi.python.org/packages/source/s/setuptools/setuptools-1.1.7.tar.gz /opt/flexget/setuptools-1.1.7.tar.gz
+RUN curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
+RUN pip install flexget
+RUN install transmissionrpc
 
 VOLUME /config
 RUN ln -sf /config /root/.flexget
