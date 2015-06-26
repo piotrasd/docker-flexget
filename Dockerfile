@@ -26,7 +26,6 @@ RUN pip install flexget[webui]
 RUN pip install transmissionrpc
 
 VOLUME /config
-ADD config /config
 RUN ln -sf /config /root/.flexget
 
 # RUN git clone https://github.com/Flexget/Flexget.git /opt/flexget
