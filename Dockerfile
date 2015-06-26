@@ -19,9 +19,9 @@ RUN apt-get update -qq && \
     apt-get autoremove && \
     apt-get autoclean
 
-RUN curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
+RUN curl -fsSL https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
 RUN pip install flexget
-RUN install transmissionrpc
+RUN pip install transmissionrpc
 
 VOLUME /config
 RUN ln -sf /config /root/.flexget
