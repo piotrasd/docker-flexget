@@ -19,17 +19,20 @@ RUN apt-get update -qq && \
     apt-get autoremove && \
     apt-get autoclean
 
-RUN curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
+RUN curl -fsSL https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
+RUN pip install setuptools
 RUN pip install flexget
-RUN install transmissionrpc
+RUN pip install flexget[webui]
+RUN pip install transmissionrpc
 
 VOLUME /config
 RUN ln -sf /config /root/.flexget
 
-WORKDIR /opt/flexget
-RUN python bootstrap.py
-RUN bin/pip install -r jenkins-requirements.txt
-RUN bin/pip install -r rtd-requirements.txt
+# RUN git clone https://github.com/Flexget/Flexget.git /opt/flexget
+# WORKDIR /opt/flexget
+# RUN python bootstrap.py
+# RUN bin/pip install -r jenkins-requirements.txt
+# RUN bin/pip install -r rtd-requirements.txt
 
 # Add flexget to runit
 #RUN mkdir /etc/service/flexget
